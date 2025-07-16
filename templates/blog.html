@@ -1,8 +1,18 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Blog
+Blog
 {% endblock %}
 {% block main %}
-    
+<script>
+  const USER_ID = {{ user_id if user_id else 'null' }};
+</script>
+<section class="blog-main mt-5">
+    <div class="articles-grid d-flex flex-column glassy container align-items-center" id="article-container" style="width: 80%;">
+        <div class="d-flex justify-content-start align-items-center" style="max-width: 400px;">
+            <h2 class="border-bottom border-3 text-center pb-3" style="width: 200px;">Articles</h2>
+        </div>
+
+    </div>
+</section>
 {% endblock %}

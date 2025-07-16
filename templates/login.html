@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block title %}
+Login (admin)
+{% endblock %}
+{% block main %}
+<div class="container d-flex flex-column justify-content-center align-items-center text-light" style="height: 85vh;">
+  <div class="glassy p-5" style="width: 100%; max-width: 400px;">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <div class="d-flex justify-content-center mb-4">
+      <h2 class="border-bottom border-3 text-center pb-2" style="width: 70%;">Log In</h2>
+    </div>
+    <form action="/login" method="post">
+      <div class="form-floating mb-3">
+        <input class="form-control" id="floatingInput" autofocus autocomplete="off" type="text" name="username"
+          placeholder="Username" required>
+        <label for="floatingInput">Username</label>
+      </div>
+      <div class="form-floating mb-4">
+        <input class="form-control" id="floatingPassword" autocomplete="off" type="password" name="password"
+          placeholder="Password" required>
+        <label for="floatingPassword">Password</label>
+      </div>
+      <div class="d-flex justify-content-center w-100">
+        <button class="btn btn-light px-4 py-2 " type="submit">Log In</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock%}
