@@ -1,0 +1,137 @@
+* {
+}
+body {
+  background: linear-gradient(
+    to bottom,
+    #000000,
+    /* Top fade color */ #1a1a1a 30%,
+    /* Middle content background */ #1a1a1a 70%,
+    /* Middle content background */ #000000 /* Bottom fade color */
+  );
+  color: white;
+  font-family: system-ui, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.nav-link-active {
+  border-bottom: 3px solid white;
+}
+.nav-link:hover {
+  border-bottom: 3px solid var(--bs-nav-link-hover-color);
+}
+.prof-img{
+  border-radius: 50%;
+  width: 80%;
+  transition: transform  0.2s ease;
+}
+.prof-img:hover{
+    transform: scale(1.05, 1.05);
+}
+#me,
+#about-me,
+#projs {
+  width: 80vw;
+}
+.glassy {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 2rem;
+  width: 100%;
+  color: #ffffff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  line-height: 1.8;
+  font-size: 1rem;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.gpa-sup:hover:after {
+  content: " <- GPA ";
+  font-size: 15px;
+}
+#doing {
+  animation: intro 1500ms;
+}
+@keyframes intro {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.4);
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.about {
+  color: white;
+}
+.courses {
+  border-bottom: 2px solid white;
+  padding-bottom: 10px;
+  width: 20%;
+  display: block;
+}
+.list-group-item {
+  border: none;
+}
+.contact-land {
+  height: 28vh;
+}
+.about-me-section {
+  padding: 4rem 2rem;
+  text-align: center;
+  color: #fff;
+}
+
+.section-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  width: 20%;
+  text-align: center;
+    justify-self: center;
+}
+
+.about-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+.about-card {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 1rem 1.5rem;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  text-align: left;
+  transition: transform 0.2s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+}
+
+.about-card img {
+    width: 60px;
+    height: 60px;
+    margin-right: 1rem;
+    filter: invert(100%);
+  }
+.info img{
+    filter: invert(100%);
+}
+
+/* Blog site style */

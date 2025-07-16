@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+{% block title%}
+Home
+{% endblock %}
+{% block main %}
+<section class="glassy container-fluid mt-5 mb-5">
+  <div class="container d-flex align-items-center" style="height: max-content;" id="me">
+    <div class="row w-100">
+      <div class="col-sm-6 d-flex justify-content-center align-items-center">
+        <img src="/static/images/profile.jpeg" alt="Profile photo of Hamzah Alhadeethi" class="prof-img ms-5" />
+      </div>
+      <div class="col-sm-6 d-flex flex-column justify-content-center text-light mt-5">
+        <h1><b>Hamzah Alhadeethi</b></h1>
+        <p class="fs-4 mt-4">
+          I am a <span id="doing"><b>🧑‍💻</b> Software Engineer</span>
+        </p>
+        <p class="fs-4 mt-3">
+          Studying at
+          <b><a href="https://www.sakarya.edu.tr" class="text-decoration-none text-light">Sakarya University</a></b>
+          <sup class="gpa-sup">3.82</sup>
+        </p>
+        <div class="container d-flex mt-4">
+          <div class="row w-100 gap-3">
+            <a href="https://github.com" target="_blank"
+              class="btn btn-dark col-lg-3 d-flex align-items-center justify-content-center gap-2 info">
+              <img src="https://img.icons8.com/ios-filled/24/github.png" alt="github" />
+              Github
+            </a>
+            <a href="https://linkedin.com" target="_blank"
+              class="btn btn-primary col-lg-3 d-flex align-items-center justify-content-center gap-2 info">
+              <img src="https://img.icons8.com/ios-filled/24/linkedin.png" alt="linkedin" />
+              LinkedIn
+            </a>
+            <a href="https://instagram.com" target="_blank"
+              class="btn btn-danger col-lg-3 d-flex align-items-center justify-content-center gap-2 info">
+              <img src="https://img.icons8.com/ios-filled/24/instagram-new--v1.png" alt="instagram" />
+              Instagram
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about-me-section">
+  <h2 class="section-title border-bottom border-3">About Me</h2>
+  <div class="about-cards-container">
+
+    <div class="about-card">
+      <img src="https://img.icons8.com/ios-filled/100/university.png" alt="University Icon">
+      <div>
+        <h3>🎓 Student at Sakarya University</h3>
+        <p>Software Engineering — GPA: 3.82</p>
+      </div>
+    </div>
+
+    <div class="about-card">
+      <img src="https://img.icons8.com/ios-filled/100/volunteering.png" alt="Volunteer Icon">
+      <div>
+        <h3>🤝 Volunteer at Takatuf Team</h3>
+        <p>Helping organize tech & education events</p>
+      </div>
+    </div>
+
+    <div class="about-card">
+      <img src="https://img.icons8.com/ios-glyphs/100/python.png" alt="Python Icon">
+      <div>
+        <h3>👨‍💻 Python & Web Developer</h3>
+        <p>Building tools, apps & weird math GUIs</p>
+      </div>
+    </div>
+
+    <div class="about-card">
+      <img src="https://img.icons8.com/ios-glyphs/100/certificate.png" alt="CS50 Icon">
+      <div>
+        <h3>📜 CS50 Course Survivor</h3>
+        <p>"It was just one bug... 7 hours ago."</p>
+      </div>
+    </div>
+
+    <div class="about-card">
+      <img src="https://img.icons8.com/ios-filled/50/google-translate.png" alt="google-translate" />
+      <div>
+        <h3>🌍 Language Lover</h3>
+        <p>Fluent in English, Arabic & Turkish — bridging worlds</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

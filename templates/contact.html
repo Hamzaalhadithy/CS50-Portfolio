@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block title %}
+    Contact
+{% endblock%}
+{% block main %}
+<div class="container d-flex justify-content-center align-items-center contact-land">
+    <p class="h1">Contact Me</p>
+</div>
+<div class="container col-6 p-5">
+    <form class="row g-3">
+        <div class="col-md-6">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail4">
+        </div>
+        <div class="col-md-6">
+            <label for="Title" class="form-label">Title</label>
+            <input type="password" class="form-control" id="Title">
+        </div>
+        <div class="col-12">
+            <label for="inputText" class="form-label">Email me</label>
+            <textarea class="form-control" id="inputText" placeholder="Hello, sir"></textarea>
+        </div>
+        <div class="col-md-6">
+            <label for="inputCity" class="form-label">City</label>
+            <input type="text" class="form-control" id="inputCity">
+        </div>
+        <div class="col-md-4">
+            <label for="inputState" class="form-label">State</label>
+            <input type="text" class="form-control" id="inputState">
+        </div>
+        <div class="col-md-2">
+            <label for="inputZip" class="form-label">Zip</label>
+            <input type="text" class="form-control" id="inputZip">
+        </div>
+        <div class="col-12">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                    Check me out
+                </label>
+            </div>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Send Email</button>
+        </div>
+    </form>
+</div>
+</div>
+{% endblock %}
