@@ -5,14 +5,60 @@ Blog
 {% endblock %}
 {% block main %}
 <script>
-  const USER_ID = {{ user_id if user_id else 'null' }};
+    const USER_ID = {{ user_id if user_id else 'null' }};
 </script>
 <section class="blog-main mt-5">
-    <div class="articles-grid d-flex flex-column glassy container align-items-center" id="article-container" style="width: 80%;">
+    <div class="articles-grid d-flex flex-column glassy container align-items-center" id="article-container"
+        style="width: 80%;">
         <div class="d-flex justify-content-start align-items-center" style="max-width: 400px;">
             <h2 class="border-bottom border-3 text-center pb-3" style="width: 200px;">Articles</h2>
         </div>
-
+        {% if session['user_id'] %}
+        <div class="d-flex w-100 justify-content-end align-items-center" id="create_article">
+            <button class="btn btn-primary">Create New Article</button> 
+        </div>
+        {% endif %}
     </div>
 </section>
+<!-- The article edit modal -->
+<div class="modal fade" id="editModal" tabindex="-1">
+    <div class="modal-dialog .modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark">Edit Article</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <label for="edit-title" class="text-dark mb-1">Title</label>
+                <input type="text" id="edit-title" class="form-control mb-2" placeholder="Title" />
+                <label for="edit-image" class="text-dark mb-1">Image URL</label>
+                <input type="text" id="edit-image" class="form-control mb-2" placeholder="Image URL" />
+                <label for="edit-content" class="text-dark mb-1">Content</label>
+                <textarea id="edit-content" class="form-control" placeholder="Content"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-success" id="save-edit">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Article Delete Modal -->
+<div class="modal fade" id="DeleteModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark">Delete Article</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-dark">
+                <h1>Are you sure you want to delete article?</h1>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-danger" id="delete">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

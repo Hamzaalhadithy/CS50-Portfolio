@@ -79,6 +79,60 @@ def article():
     articles = db.execute("SELECT * FROM articles")
     return jsonify(articles), 200
 
+@app.route("/articles/<int:article_id>")
+def get_article(article_id):
+    article = db.execute("SELECT * FROM articles WHERE id = ?", article_id)
+    if not article:
+        return jsonify({"error" : "Article not found"}), 404
+    
+    return jsonify(article[0]), 200
+
+@app.route("/articles/<int:article_id>/edit", methods=["PUT"])
+def edit_article(article_id):
+    data = request.get_json()
+    if not data:
+        return jsonify({"Error": "Didn't submit any content"}), 404
+    # validate required fields
+    if not all (key in data for key in ("image_url", "title", "content")):
+        return jsonify({"error" : "Missing required fields"}), 400
+    
+    #check if article exists
+    article = db.execute("SELECT * FROM articles WHERE id = ?", article_id)
+    if not article:
+        return jsonify({"error" : "aticled doesn't exist"}), 404
+    
+    # Update article
+    db.execute(
+        "UPDATE articles SET image_url = ?, title = ?, content = ? WHERE id = ?",
+          data['image_url'], data['title'], data['content'], article_id)
+    
+    return jsonify({"Success" : True}), 200
+
+@app.route("/articles/create", methods=["POST"])
+def create_article(article_id):
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data was sent"}), 404
+    if not all (key in data for key in ("image_url", "title", "content")):
+        return jsonify({"error":"Missing required fields"}), 404
+    
+    db.execute(
+        "INSERT INTO articles (title, content, image_url, author_id) VALUES (?, ?, ?, ?)",
+          data['title'], data['content'], data['image_url'], session['user_id']
+          )
+    return jsonify({"success": True}), 200
+
+@app.route("/articles/<int:article_id>/delete", methods=["DELETE"])
+def del_article(article_id):
+
+    article = db.execute("SELECT * FROM articles WHERE id = ?", article_id)
+    if not article:
+        return jsonify({"error":"Article doesn't exist"}), 404
+    
+    db.execute("DELETE FROM articles WHERE id = ?", article_id)
+    return jsonify({"success": True}), 200
+
+
 @app.route("/projects")
 def projects():
     return render_template("projects.html")

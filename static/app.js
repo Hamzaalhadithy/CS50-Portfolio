@@ -74,13 +74,10 @@ if (window.location.pathname == '/blog')
                     <div class="d-flex justify-content-between">
                         <span style="font-size: 10pt;">Published ${formated}</span>
                         ${USER_ID ? `
-                            <form action="/blog" method="post">
-                                <input type="hidden" value="${article.id}">
                                 <span class="gap-3">
-                                    <button class="btn btn-primary" name="edit" value="edit">Edit</button>
-                                    <button class="btn btn-danger" name="delete" value="delete">Delete</button>
+                                    <button class="btn btn-primary edit-btn" data-id="${article.id}">Edit</button>
+                                    <button class="btn btn-danger delete-btn" data-id="${article.id}"  name="delete" value="delete">Delete</button>
                                 </span>
-                            </form>
                         ` : ''}
                         </span>
                     </div>
@@ -90,5 +87,68 @@ if (window.location.pathname == '/blog')
       `;
     }
     article_container.innerHTML += html;
+
+    let currentArticleId = null;
+
+    document.querySelectorAll(".edit-btn").forEach(button =>{
+      button.addEventListener('click', ()=>{
+        currentArticleId = button.dataset.id;
+
+        const articleCard = button.closest('.article-card');
+        document.getElementById("edit-title").value = articleCard.querySelector("h2").innerText;
+        document.getElementById("edit-image").value = articleCard.querySelector("img").src;
+        document.getElementById("edit-content").value = articleCard.querySelector("p").innerText;
+
+        new bootstrap.Modal(document.getElementById("editModal")).show();
+      });
+    });
+
+    document.getElementById("save-edit").addEventListener("click", async () => {
+      const updatedArticle = {
+        title: document.getElementById("edit-title").value,
+        image_url: document.getElementById("edit-image").value,
+        content: document.getElementById("edit-content").value
+      };
+
+      const response = await fetch(`/articles/${currentArticleId}/edit`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(updatedArticle)
+      });
+
+      const result = await response.json();
+
+      if(response.ok){
+        alert("Article Updated Successfully");
+        location.reload();
+      }else{
+        alert("Error" + result.error);
+      }
+    });
+  
+    document.querySelectorAll(".delete-btn").forEach(button =>{
+      button.addEventListener('click', ()=>{
+        currentArticleId = button.dataset.id
+        new bootstrap.Modal(document.getElementById("DeleteModal")).show();
+      })
+    });
+
+    document.getElementById("delete").addEventListener('click', async ()=>{
+      const response = await fetch(`/articles/${currentArticleId}/delete`, {
+        method: "DELETE",
+      });
+
+      const result = await response.json()
+
+      if(response.ok){
+        alert("Article Deleted Successfully");
+        location.reload();
+      }
+      else{
+        alert("Error" + result.error);
+      }
+    });
   });
 }
