@@ -154,6 +154,7 @@ a {
   transition: transform 0.2s ease;
 }
 #article:hover{
+  cursor: pointer;
   background: rgba(255, 255, 255, 0.092);
   transform: translateY(-10px);
 }
