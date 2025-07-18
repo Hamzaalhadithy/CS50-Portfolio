@@ -1,17 +1,30 @@
+import os
 from flask import Flask, flash ,render_template, redirect, request, session, url_for, jsonify
 from flask_session import Session
 from cs50 import SQL
 from werkzeug.security import check_password_hash, generate_password_hash
 from functools import wraps
+from flask_mail import Mail, Message
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = 'alhadeethimo'
+app.secret_key = os.getenv("SECRET_KEY")
 
 
 # Configure session to use filesystem (instead of signed cookies)
 app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
+
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = os.getenv("MAIL_USER")
+app.config['MAIL_PASSWORD'] = os.getenv("MAIL_PASS")
+app.config['MAIL_DEFAULT_SENDER'] = 'hamzaalseade@gmail.com'
+
+mail = Mail(app)
 
 db = SQL("sqlite:///main.db")
 
@@ -74,12 +87,12 @@ def index():
 def blog():
     return render_template("blog.html", user_id=session.get("user_id"))
 
-@app.route("/articles")
+@app.route("/api/articles")
 def article():
     articles = db.execute("SELECT * FROM articles")
     return jsonify(articles), 200
 
-@app.route("/articles/<int:article_id>")
+@app.route("/api/articles/<int:article_id>")
 def get_article(article_id):
     article = db.execute("SELECT * FROM articles WHERE id = ?", article_id)
 
@@ -88,7 +101,7 @@ def get_article(article_id):
     
     return jsonify(article[0]), 200
 
-@app.route("/articles/search")
+@app.route("/api/articles/search")
 def search_articles():
     query = request.args.get("query")
     if not query:
@@ -98,7 +111,7 @@ def search_articles():
     articles = db.execute("SELECT * FROM articles WHERE title LIKE ? OR content LIKE ?", like_query, like_query)
     return jsonify(articles), 200
 
-@app.route("/articles/create", methods=["POST"])
+@app.route("/api/articles/create", methods=["POST"])
 def create_article():
     if "user_id" not in session:
         return jsonify({"error": "Not authorized"}), 401
@@ -116,7 +129,7 @@ def create_article():
           )
     return jsonify({"success": True}), 200
 
-@app.route("/articles/<int:article_id>/edit", methods=["PUT"])
+@app.route("/api/articles/<int:article_id>/edit", methods=["PUT"])
 def edit_article(article_id):
     data = request.get_json()
 
@@ -141,7 +154,7 @@ def edit_article(article_id):
 
 
 
-@app.route("/articles/<int:article_id>/delete", methods=["DELETE"])
+@app.route("/api/articles/<int:article_id>/delete", methods=["DELETE"])
 def del_article(article_id):
 
     article = db.execute("SELECT * FROM articles WHERE id = ?", article_id)
@@ -156,8 +169,36 @@ def del_article(article_id):
 def projects():
     return render_template("projects.html")
 
+@app.route("/api/projects")
+def get_projects():
+    projects = db.execute("SELECT * FROM projects")
+    if not projects:
+        return jsonify({"error":"No projects were found"}), 404
+    return jsonify(projects), 200
+
+
 @app.route("/contact")
 def contact():
+    if request.method == "POST":
+        name = request.form.get("name")
+        email = request.form.get("email")
+        message = request.form.get("message")
+
+        msg = Message(
+            subject=f"New Contact Message from {name}",
+            recipients=["hamzaalseade@gmail.com"],
+            body =f"From: {name}\nEmail: {email}\n Message: {message}"
+        )
+
+        try:
+            mail.send(msg)
+            flash("Your message has been sent Successfully!", "success")
+        except Exception as e:
+            print("❌ Mail send failed:", e)
+            flash("Failed to send message. Try again later", "danger")
+
+        return redirect("/contact")
+    
     return render_template("contact.html")
 
 

@@ -141,29 +141,39 @@ a {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
   padding: 2rem;
-  width: 80%;
 }
 
 .article-card {
-  background: #2f2f2f;
-  padding: 1rem;
-  border-radius: 10px;
+  border-radius: 15px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   color: white;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  min-height: 220px;
 }
-#article{
-  transition: transform 0.2s ease;
-}
-#article:hover{
-  cursor: pointer;
-  background: rgba(255, 255, 255, 0.092);
-  transform: translateY(-10px);
-}
-.article-image img{
-  height: 100%;
-  width: 100%;
+.article-img {
+  width: 200px;
+  height: 200px;
   object-fit: cover;
   border-radius: 50%;
+}
+.article-img-search {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.article-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.article-desc {
+  font-size: 0.95rem;
+  color: #ccc;
+  max-height: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @media only screen and (max-width: 700px) {
@@ -173,3 +183,25 @@ a {
 }
 
 /* Projects CSS */
+.project-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 20px;
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.project-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}

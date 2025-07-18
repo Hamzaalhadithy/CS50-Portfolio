@@ -3,47 +3,42 @@
     Contact
 {% endblock%}
 {% block main %}
-<div class="container d-flex justify-content-center align-items-center contact-land">
-    <p class="h1">Contact Me</p>
-</div>
-<div class="container col-6 p-5">
-    <form class="row g-3">
-        <div class="col-md-6">
-            <label for="inputEmail4" class="form-label">Email</label>
-            <input type="email" class="form-control" id="inputEmail4">
-        </div>
-        <div class="col-md-6">
-            <label for="Title" class="form-label">Title</label>
-            <input type="password" class="form-control" id="Title">
-        </div>
-        <div class="col-12">
-            <label for="inputText" class="form-label">Email me</label>
-            <textarea class="form-control" id="inputText" placeholder="Hello, sir"></textarea>
-        </div>
-        <div class="col-md-6">
-            <label for="inputCity" class="form-label">City</label>
-            <input type="text" class="form-control" id="inputCity">
-        </div>
-        <div class="col-md-4">
-            <label for="inputState" class="form-label">State</label>
-            <input type="text" class="form-control" id="inputState">
-        </div>
-        <div class="col-md-2">
-            <label for="inputZip" class="form-label">Zip</label>
-            <input type="text" class="form-control" id="inputZip">
-        </div>
-        <div class="col-12">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck">
-                <label class="form-check-label" for="gridCheck">
-                    Check me out
-                </label>
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-10 glassy p-5 rounded shadow-lg ">
+      <div class="row">
+        <!-- Contact Form -->
+        <div class="col-lg-7">
+          <h2 class="text-light mb-4">📬 Get in Touch</h2>
+          <form id="contact-form">
+            <div class="mb-3">
+              <label for="name" class="form-label text-light">Your Name</label>
+              <input type="text" class="form-control" id="name" placeholder="John Doe" required />
             </div>
+            <div class="mb-3">
+              <label for="email" class="form-label text-light">Email Address</label>
+              <input type="email" class="form-control" id="email" placeholder="name@example.com" required />
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label text-light">Message</label>
+              <textarea class="form-control" id="message" rows="5" placeholder="Write your message..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">Send Message</button>
+          </form>
         </div>
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary">Send Email</button>
+
+        <!-- Contact Info -->
+        <div class="col-lg-4 d-flex flex-column justify-content-center mt-4 mt-lg-0 text-light">
+          <h4 class="mb-3">📍 Location</h4>
+          <p>🌎 Earth</p>
+          <h4 class="mb-3">📧 Email</h4>
+          <p>hamzaalseade@gmail.com</p>
+          <h4 class="mb-3">💬 Let's Connect</h4>
+          <p>Feel free to reach out with project ideas, questions, or just to say hello!</p>
         </div>
-    </form>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
+
 {% endblock %}

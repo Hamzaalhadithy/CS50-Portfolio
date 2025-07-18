@@ -3,31 +3,14 @@
 Projects
 {% endblock%}
 {% block main%}
-<div class="projs container vh-100">
-    <div class="carousal mt-5">
-        <div id="carousal" style="height: 70vh;" class="carousel slide" data-bs-ride="false">
-            <div class="carousel-indicators">
-
-            </div>
-            <div class="carousel-inner">
-
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carousal" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carousal" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
+<div class="container py-5">
+    <div class="text-center py-5">
+    <h1 class="display-4 fw-bold text-light">My Projects</h1>
+    <p class="lead text-secondary">A showcase of applications, tools, and experiments I've built using Flask, Python, and other web technologies.</p>
     </div>
-</div>
-<div>
-    <div class="container">
-        <p class="h2 pb-2 mb-3 border-bottom border-3" style="width:20%">My Projects</p>
-    </div>
-    <div class="cards container d-flex flex-wrap justify-content-center">
+    <div class="row" id="projects-container">
+        <!-- JS will inject project cards here -->
+
     </div>
 </div>
 {% endblock%}
