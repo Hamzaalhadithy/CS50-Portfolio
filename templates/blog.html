@@ -8,13 +8,14 @@ Blog
     const USER_ID = {{ user_id if user_id else 'null' }};
 </script>
 <section class="blog-main mt-5">
-    <div class="articles-grid d-flex flex-column glassy container align-items-center" id="article-container">
-        <div class="d-flex justify-content-between w-100 align-items-center" style="max-width: inherit;">
-            <h2 class="border-bottom border-3 pb-2" style="width: 200px;">Articles</h2>
-            <button class="btn btn-light" id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+    <div class="articles-grid d-flex flex-column container align-items-center" id="article-container">
+        <div class="text-center py-5">
+        <h1 class="display-4 fw-bold text-light">My Blog</h1>
+        <p class="lead text-secondary">Whatever Croses My mind on the fly</p>
         </div>
-        {% if session['user_id'] %}
+        <button class="btn btn-light" id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         <div class="d-flex w-100 justify-content-end align-items-center" >
+        {% if session['user_id'] %}
             <button class="btn btn-primary" id="create-article">Create New Article</button>     
         </div>
         {% endif %}

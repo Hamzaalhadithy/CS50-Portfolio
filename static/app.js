@@ -1,3 +1,6 @@
+document.getElementById("bottom-right-arrow").addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 if (window.location.pathname == "/") {
   document.getElementById("home").classList.add("active");
   document.getElementById("home").classList.add("nav-link-active");
@@ -105,7 +108,7 @@ if (window.location.pathname == "/blog") {
           <div class="d-flex justify-content-between align-items-center mt-2">
             <span style="font-size: 10pt;">Published ${formated}</span>
             <span class="d-flex gap-2">
-              <button class="btn btn-primary read-btn" data-id="${
+              <button class="btn read-btn btn-outline-light" data-id="${
                 article.id
               }">Read More</button>
               ${
@@ -281,7 +284,7 @@ if (window.location.pathname == "/blog") {
                     <div class="d-flex justify-content-between align-items-center mt-2">
                       <span style="font-size: 10pt;">Published ${formated}</span>
                       <span class="d-flex gap-2">
-                        <button class="btn btn-primary read-btn-inside" data-id="${article.id}">Read More</button>
+                        <button class="btn btn-outline-light read-btn-inside" data-id="${article.id}">Read More</button>
                       </span>
                     </div>
                   </div>

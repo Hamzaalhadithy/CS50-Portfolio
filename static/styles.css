@@ -29,6 +29,26 @@ body {
 .prof-img:hover{
     transform: scale(1.05, 1.05);
 }
+#bottom-right-arrow {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 5%;
+  text-decoration: none;
+  font-size: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+
+#bottom-right-arrow:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.6);
+  transform: translateY(-5px);
+}
+
 #me,
 #about-me,
 #projs {
@@ -151,6 +171,11 @@ a {
   -webkit-backdrop-filter: blur(10px);
   color: white;
   min-height: 220px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.article-card:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 .article-img {
   width: 200px;
@@ -175,11 +200,19 @@ a {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
+#search-btn{
+  position: fixed;
+  margin-top: 18%;
+  margin-left: 90%;
+}
 @media only screen and (max-width: 700px) {
   .articles-grid{
     width: 100%;
   }
+  #search-btn{
+  margin-top: 80%;
+  margin-left: 90%;
+}
 }
 
 /* Projects CSS */

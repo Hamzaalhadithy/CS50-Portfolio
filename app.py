@@ -177,7 +177,7 @@ def get_projects():
     return jsonify(projects), 200
 
 
-@app.route("/contact")
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
     if request.method == "POST":
         name = request.form.get("name")
@@ -187,7 +187,7 @@ def contact():
         msg = Message(
             subject=f"New Contact Message from {name}",
             recipients=["hamzaalseade@gmail.com"],
-            body =f"From: {name}\nEmail: {email}\n Message: {message}"
+            body =f"From: {name}\nEmail: {email}\nMessage: {message}"
         )
 
         try:
