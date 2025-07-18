@@ -8,10 +8,10 @@ Blog
     const USER_ID = {{ user_id if user_id else 'null' }};
 </script>
 <section class="blog-main mt-5">
-    <div class="articles-grid d-flex flex-column glassy container align-items-center" id="article-container"
-        style="width: 80%;">
-        <div class="d-flex justify-content-start align-items-center" style="max-width: 400px;">
-            <h2 class="border-bottom border-3 text-center pb-3" style="width: 200px;">Articles</h2>
+    <div class="articles-grid d-flex flex-column glassy container align-items-center" id="article-container">
+        <div class="d-flex justify-content-between w-100 align-items-center" style="max-width: inherit;">
+            <h2 class="border-bottom border-3 pb-2" style="width: 200px;">Articles</h2>
+            <button class="btn btn-light" id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         {% if session['user_id'] %}
         <div class="d-flex w-100 justify-content-end align-items-center" >
@@ -23,7 +23,7 @@ Blog
 <!-- The article edit modal -->
 <div class="modal fade" id="editModal" tabindex="-1">
     <div class="modal-dialog .modal-dialog-scrollable modal-dialog-centered modal-lg">
-        <div class="modal-content bg-dark">
+        <div class="modal-content bg-dark glassy p-4">
             <div class="modal-header">
                 <h5 class="modal-title ">Edit Article</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -46,9 +46,9 @@ Blog
 <!-- Article Delete Modal -->
 <div class="modal fade" id="DeleteModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
+        <div class="modal-content bg-dark glassy p-4">
             <div class="modal-header">
-                <h5 class="modal-title text-dark">Delete Article</h5>
+                <h5 class="modal-title">Delete Article</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body text-dark">
@@ -64,7 +64,7 @@ Blog
 <!-- Article Create Modal -->
 <div class="modal fade" id="CreateModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content bg-dark">
+        <div class="modal-content bg-dark glassy p-4">
             <div class="modal-header">
                 <h5 class="modal-title text-dark">Create Article</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
@@ -79,7 +79,7 @@ Blog
                     <input type="text" name="image" id="create-image" class="form-control">
                 </div>
                 <div class="mb-3">
-                    <label for="Content" class="">Content</label>
+                    <label for="content" class="">Content</label>
                     <textarea name="content" class="form-control" id="create-content" placeholder="Article Content" rows="10"></textarea>
                 </div>
             </div>
@@ -93,14 +93,14 @@ Blog
 
 <div class="modal fade" id="readArtical" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content bg-dark">
+        <div class="modal-content bg-dark glassy p-4">
             <div class="modal-header">
                 <h5 class="modal-title">Read Artical</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <button type="button" class="btn-close bg-light" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
                 <div class="p-3 d-flex justify-content-center align-items-center mb-3" >
-                    <img id="article-image" style="width: 90%; max-height: 500px; max-width: 500px;">
+                    <img id="article-image" style="max-height: 500px; max-width: 500px;">
                 </div>
                 <div class="mb-3">
                     <h3 id="article-title"></h3>
@@ -114,5 +114,20 @@ Blog
             </div>
         </div>
     </div>
+</div>
+<!-- Search Modal -->
+<div class="modal fade" id="searchModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content bg-dark glassy p-4">
+      <div class="modal-header">
+        <h5 class="modal-title">Search Articles</h5>
+        <button class=" btn-close bg-light" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input id="search-input" type="text" autofocus class="form-control mb-3" placeholder="Enter keyword..." />
+        <div id="search-results" class="d-flex flex-column gap-3"></div>
+      </div>
+    </div>
+  </div>
 </div>
 {% endblock %}

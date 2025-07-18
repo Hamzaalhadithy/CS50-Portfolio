@@ -88,6 +88,34 @@ def get_article(article_id):
     
     return jsonify(article[0]), 200
 
+@app.route("/articles/search")
+def search_articles():
+    query = request.args.get("query")
+    if not query:
+        return jsonify({"error":"No search query provied"}), 404
+
+    like_query = "%" + query + "%"
+    articles = db.execute("SELECT * FROM articles WHERE title LIKE ? OR content LIKE ?", like_query, like_query)
+    return jsonify(articles), 200
+
+@app.route("/articles/create", methods=["POST"])
+def create_article():
+    if "user_id" not in session:
+        return jsonify({"error": "Not authorized"}), 401
+    
+    data = request.get_json()
+    if not data:
+        return jsonify({"error": "No data was sent"}), 404
+    
+    if not all (key in data for key in ("image_url", "title", "content")):
+        return jsonify({"error":"Missing required fields"}), 404
+    
+    db.execute(
+        "INSERT INTO articles (title, content, image_url, author_id) VALUES (?, ?, ?, ?)",
+          data['title'], data['content'], data['image_url'], session['user_id']
+          )
+    return jsonify({"success": True}), 200
+
 @app.route("/articles/<int:article_id>/edit", methods=["PUT"])
 def edit_article(article_id):
     data = request.get_json()
@@ -111,23 +139,6 @@ def edit_article(article_id):
     
     return jsonify({"Success" : True}), 200
 
-@app.route("/articles/create", methods=["POST"])
-def create_article():
-    if "user_id" not in session:
-        return jsonify({"error": "Not authorized"}), 401
-    
-    data = request.get_json()
-    if not data:
-        return jsonify({"error": "No data was sent"}), 404
-    
-    if not all (key in data for key in ("image_url", "title", "content")):
-        return jsonify({"error":"Missing required fields"}), 404
-    
-    db.execute(
-        "INSERT INTO articles (title, content, image_url, author_id) VALUES (?, ?, ?, ?)",
-          data['title'], data['content'], data['image_url'], session['user_id']
-          )
-    return jsonify({"success": True}), 200
 
 
 @app.route("/articles/<int:article_id>/delete", methods=["DELETE"])
