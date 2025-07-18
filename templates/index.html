@@ -3,42 +3,49 @@
 Home
 {% endblock %}
 {% block main %}
-<section class="glassy container-fluid mt-5 mb-5">
-  <div class="container d-flex align-items-center" style="height: 70vh;" id="me">
-    <div class="row w-100">
-      <div class="col-sm-6 d-flex justify-content-center align-items-center">
-        <img src="/static/images/profile.jpeg" alt="Profile photo of Hamzah Alhadeethi" class="prof-img ms-5" />
+<section class="glassy container-fluid py-5 mt-5" id="me">
+  <div class="container">
+    <div class="row align-items-center justify-content-center">
+      
+      
+      <div class="col-md-6 d-flex justify-content-center mb-4 mb-md-0">
+        <img src="/static/images/profile.jpeg" alt="Profile photo of Hamzah Alhadeethi"
+             class="img-fluid rounded-circle shadow prof-pic" />
       </div>
-      <div class="col-sm-6 d-flex flex-column justify-content-center text-light mt-5">
-        <h1><b>Hamzah Alhadeethi</b></h1>
+
+      
+      <div class="col-md-6 text-light text-center text-md-start">
+        <h1 class="fw-bold">Hamzah Alhadeethi</h1>
+        
         <p class="fs-4 mt-4">
           I am a <span id="doing"><b>🧑‍💻</b> Software Engineer</span>
         </p>
-        <p class="fs-4 mt-3">
+        
+        <p class="fs-5 mt-3">
           Studying at
           <b><a href="https://www.sakarya.edu.tr" class="text-decoration-none text-light">Sakarya University</a></b>
-          <sup class="gpa-sup">3.82</sup>
         </p>
-        <div class="container d-flex mt-4">
-          <div class="row w-100 gap-3">
-            <a href="https://github.com" target="_blank"
-              class="btn btn-dark col-lg-3 d-flex align-items-center justify-content-center gap-2 info">
-              <img src="https://img.icons8.com/ios-filled/24/github.png" alt="github" />
-              Github
-            </a>
-            <a href="https://linkedin.com" target="_blank"
-              class="btn btn-primary col-lg-3 d-flex align-items-center justify-content-center gap-2 info">
-              <img src="https://img.icons8.com/ios-filled/24/linkedin.png" alt="linkedin" />
-              LinkedIn
-            </a>
-            <a href="https://instagram.com" target="_blank"
-              class="btn btn-danger col-lg-3 d-flex align-items-center justify-content-center gap-2 info">
-              <img src="https://img.icons8.com/ios-filled/24/instagram-new--v1.png" alt="instagram" />
-              Instagram
-            </a>
-          </div>
+
+       
+        <div class="d-flex flex-wrap justify-content-center justify-content-md-start gap-3 mt-4">
+          <a href="https://github.com/Hamzaalhadithy" target="_blank"
+             class="btn btn-dark d-flex align-items-center gap-2">
+            <img src="https://img.icons8.com/ios-filled/24/github.png" class="social-icon" alt="github" />
+            Github
+          </a>
+          <a href="https://www.linkedin.com/in/hamzah-alhadeethi-20354824a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"
+             class="btn btn-primary d-flex align-items-center gap-2">
+            <img src="https://img.icons8.com/ios-filled/24/linkedin.png" class="social-icon" alt="linkedin" />
+            LinkedIn
+          </a>
+          <a href="https://instagram.com" target="_blank"
+             class="btn btn-danger d-flex align-items-center gap-2">
+            <img src="https://img.icons8.com/ios-filled/24/instagram-new--v1.png" class="social-icon" alt="instagram" />
+            Instagram
+          </a>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -51,7 +58,7 @@ Home
       <img src="https://img.icons8.com/ios-filled/100/university.png" alt="University Icon">
       <div>
         <h3>🎓 Student at Sakarya University</h3>
-        <p>Software Engineering — GPA: 3.82</p>
+        <p>Software Engineering</p>
       </div>
     </div>
 
@@ -89,4 +96,90 @@ Home
 
   </div>
 </section>
+<section class="container-fluid py-5 mt-5 glassy" id="skills">
+  <div class="container text-light">
+    <h2 class="text-center mb-5 display-5 fw-bold">🚀 Skills & Tools</h2>
+    <div class="row gy-4">
+
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="skill-box p-4 rounded glassy-inner h-100">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-3">
+              <i class="fa-brands fa-html5"></i>
+              <h5 class="m-0">HTML5</h5>
+            </div>
+            <span class="text-end">95%</span>
+          </div>
+          <div class="progress mt-3" style="height: 8px;">
+            <div class="progress-bar bg-success" role="progressbar" style="width: 95%;"></div>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="skill-box p-4 rounded glassy-inner h-100">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-3">
+              <i class="fa-brands fa-css"></i>
+              <h5 class="m-0">CSS3</h5>
+            </div>
+            <span class="text-end">90%</span>
+          </div>
+          <div class="progress mt-3" style="height: 8px;">
+            <div class="progress-bar bg-primary" role="progressbar" style="width: 90%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="skill-box p-4 rounded glassy-inner h-100">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-3">
+              <i class="fa-brands fa-js"></i>
+              <h5 class="m-0">JavaScript</h5>
+            </div>
+            <span class="text-end">85%</span>
+          </div>
+          <div class="progress mt-3" style="height: 8px;">
+            <div class="progress-bar bg-warning" role="progressbar" style="width: 85%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="skill-box p-4 rounded glassy-inner h-100">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-3">
+              <i class="fa-brands fa-python"></i>
+              <h5 class="m-0">Python</h5>
+            </div>
+            <span class="text-end">50%</span>
+          </div>
+          <div class="progress mt-3" style="height: 8px;">
+            <div class="progress-bar bg-danger" role="progressbar" style="width: 50%;"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="skill-box p-4 rounded glassy-inner h-100">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center gap-3">
+              <i class="fa-solid fa-database"></i>
+              <h5 class="m-0">SQL</h5>
+            </div>
+            <span class="text-end">80%</span>
+          </div>
+          <div class="progress mt-3" style="height: 8px;">
+            <div class="progress-bar bg-secondary" role="progressbar" style="width: 80%;"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 {% endblock %}

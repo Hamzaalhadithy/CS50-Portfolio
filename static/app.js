@@ -114,8 +114,8 @@ if (window.location.pathname == "/blog") {
               ${
                 USER_ID
                   ? `
-                    <button class="btn btn-primary edit-btn" data-id="${article.id}">Edit</button>
-                    <button class="btn btn-danger delete-btn" data-id="${article.id}">Delete</button>
+                    <button class="btn btn-outline-primary edit-btn" data-id="${article.id}">Edit</button>
+                    <button class="btn btn-outline-danger delete-btn" data-id="${article.id}">Delete</button>
                     `
                   : ""
               }

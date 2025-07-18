@@ -5,29 +5,22 @@ body {
   background: linear-gradient(
     to bottom,
     #000000,
-    /* Top fade color */ #1a1a1a 30%,
-    /* Middle content background */ #1a1a1a 70%,
-    /* Middle content background */ #000000 /* Bottom fade color */
+    #1a1a1a 30%,
+    #1a1a1a 70%,
+    #000000 
   );
   color: white;
-  font-family: system-ui, sans-serif;
   min-height: 100vh;
   margin: 0;
 }
-
+.form-control::placeholder{
+  color: white;
+}
 .nav-link-active {
   border-bottom: 3px solid white;
 }
 .nav-link:hover {
   border-bottom: 3px solid var(--bs-nav-link-hover-color);
-}
-.prof-img{
-  border-radius: 50%;
-  width: 80%;
-  transition: transform  0.2s ease;
-}
-.prof-img:hover{
-    transform: scale(1.05, 1.05);
 }
 #bottom-right-arrow {
   position: fixed;
@@ -67,13 +60,25 @@ body {
   line-height: 1.8;
   font-size: 1rem;
 }
+.glassy-inner {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.glassy-inner:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 255, 255, 0.1);
+}
+.prof-pic{
+  max-width: 400px;
+}
 a {
   text-decoration: none;
   color: inherit;
-}
-.gpa-sup:hover:after {
-  content: " <- GPA ";
-  font-size: 15px;
 }
 #doing {
   animation: intro 1500ms;
@@ -90,20 +95,8 @@ a {
     opacity: 0;
   }
 }
-.about {
-  color: white;
-}
-.courses {
-  border-bottom: 2px solid white;
-  padding-bottom: 10px;
-  width: 20%;
-  display: block;
-}
-.list-group-item {
-  border: none;
-}
-.contact-land {
-  height: 28vh;
+.social-icon{
+  filter: invert(100%);
 }
 .about-me-section {
   padding: 4rem 2rem;
@@ -116,8 +109,9 @@ a {
   margin-bottom: 2rem;
   width: 20%;
   text-align: center;
-    justify-self: center;
+  justify-self: center;
 }
+
 
 .about-cards-container {
   display: flex;
@@ -149,9 +143,6 @@ a {
   width: 60px;
   height: 60px;
   margin-right: 1rem;
-  filter: invert(100%);
-}
-.info img{
   filter: invert(100%);
 }
 
@@ -212,6 +203,12 @@ a {
   #search-btn{
   margin-top: 80%;
   margin-left: 90%;
+  }
+  .prof-pic{
+    max-width: 200px;
+  }
+  .section-title {
+  width: 50%;
 }
 }
 

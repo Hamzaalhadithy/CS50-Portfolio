@@ -18,19 +18,19 @@
       <div class="row">
         <!-- Contact Form -->
         <div class="col-lg-7">
-          <h2 class="text-light mb-4">📬 Get in Touch</h2>
-          <form id="contact-form" action="/contact" method="POST">
+          <h2 class="text-light mb-4 border-bottom border-3 pb-3" style="width: 35%;">Get in Touch</h2>
+          <form id="contact-form bg-dark text-light" action="/contact" method="POST">
             <div class="mb-3">
               <label for="name" class="form-label text-light">Your Name</label>
-              <input type="text" class="form-control" name="name" id="name" placeholder="John Doe" required />
+              <input type="text" class="form-control bg-dark text-light" name="name" id="name" placeholder="John Doe" required />
             </div>
             <div class="mb-3">
               <label for="email" class="form-label text-light">Email Address</label>
-              <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com" required />
+              <input type="email" class="form-control bg-dark text-light" name="email" id="email" placeholder="name@example.com" required />
             </div>
             <div class="mb-3">
               <label for="message" class="form-label text-light">Message</label>
-              <textarea class="form-control" id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
+              <textarea class="form-control bg-dark text-light" id="message" name="message" rows="5" placeholder="Write your message..." required></textarea>
             </div>
             <button type="submit" class="btn btn-outline-light mt-2">Send Message</button>
           </form>
@@ -49,5 +49,4 @@
     </div>
   </div>
 </div>
-
 {% endblock %}

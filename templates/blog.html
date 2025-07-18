@@ -16,7 +16,7 @@ Blog
         <button class="btn btn-light" id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         <div class="d-flex w-100 justify-content-end align-items-center" >
         {% if session['user_id'] %}
-            <button class="btn btn-primary" id="create-article">Create New Article</button>     
+            <button class="btn btn-outline-light" id="create-article">Create New Article</button>     
         </div>
         {% endif %}
     </div>
@@ -27,19 +27,19 @@ Blog
         <div class="modal-content bg-dark glassy p-4">
             <div class="modal-header">
                 <h5 class="modal-title ">Edit Article</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
                 <label for="edit-title" class=" mb-1">Title</label>
-                <input type="text" id="edit-title" class="form-control mb-2" placeholder="Title" />
+                <input type="text" id="edit-title" class="form-control mb-2 bg-dark text-light border-secondary" placeholder="Title" />
                 <label for="edit-image" class=" mb-1">Image URL</label>
-                <input type="text" id="edit-image" class="form-control mb-2" placeholder="Image URL" />
+                <input type="text" id="edit-image" class="form-control mb-2 bg-dark text-light border-secondary" placeholder="Image URL" />
                 <label for="edit-content" class=" mb-1">Content</label>
-                <textarea id="edit-content" class="form-control" placeholder="Content" rows="10"></textarea>
+                <textarea id="edit-content" class="form-control bg-dark text-light border-secondary" placeholder="Content" rows="10"></textarea>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button class="btn btn-success" id="save-edit">Save</button>
+                <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-outline-success" id="save-edit">Save</button>
             </div>
         </div>
     </div>
@@ -47,17 +47,17 @@ Blog
 <!-- Article Delete Modal -->
 <div class="modal fade" id="DeleteModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content bg-dark glassy p-4">
+        <div class="modal-content glassy p-4">
             <div class="modal-header">
                 <h5 class="modal-title">Delete Article</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal"></button>
             </div>
-            <div class="modal-body text-dark">
+            <div class="modal-body text-light">
                 <h1>Are you sure you want to delete article?</h1>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button class="btn btn-danger" id="delete">Delete</button>
+                <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-outline-danger" id="delete">Delete</button>
             </div>
         </div>
     </div>
@@ -67,26 +67,26 @@ Blog
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content bg-dark glassy p-4">
             <div class="modal-header">
-                <h5 class="modal-title text-dark">Create Article</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                <h5 class="modal-title text-light">Create Article</h5>
+                <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body ">
                 <div class="mb-3">
                     <label for="title" class="">Title</label>
-                    <input type="text" autocomplete="off" autofocus name="title" id="create-title" class="form-control">
+                    <input type="text" autocomplete="off" autofocus name="title" id="create-title" class="form-control bg-dark text-light border-secondary">
                 </div>
                 <div class="mb-3">
                     <label for="image" class="">Image URL</label>
-                    <input type="text" name="image" id="create-image" class="form-control">
+                    <input type="text" name="image" id="create-image" class="form-control bg-dark text-light border-secondary">
                 </div>
                 <div class="mb-3">
                     <label for="content" class="">Content</label>
-                    <textarea name="content" class="form-control" id="create-content" placeholder="Article Content" rows="10"></textarea>
+                    <textarea name="content" class="form-control bg-dark text-light border-secondary" id="create-content" placeholder="Article Content" rows="10"></textarea>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button class="btn btn-success" id="create">Create</button>
+                <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-outline-success" id="create">Create</button>
             </div>
         </div>
     </div>
@@ -94,24 +94,24 @@ Blog
 
 <div class="modal fade" id="readArtical" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered modal-lg">
-        <div class="modal-content bg-dark glassy p-4">
-            <div class="modal-header">
+        <div class="modal-content p-2 pb-0 bg-dark glassy p-4">
+            <div class="modal-header p-3">
                 <h5 class="modal-title">Read Artical</h5>
-                <button type="button" class="btn-close bg-light" data-bs-dismiss="modal"></button>
+                <button type="button" class="btn-close bg-secondary" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
                 <div class="p-3 d-flex justify-content-center align-items-center mb-3" >
                     <img id="article-image" style="max-height: 500px; max-width: 500px;">
                 </div>
-                <div class="mb-3">
+                <div class="mb-4">
                     <h3 id="article-title"></h3>
                 </div>
-                <div class="mb-3">
+                <div class="mb-4">
                     <p id="article-content"></p>
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -122,10 +122,10 @@ Blog
     <div class="modal-content bg-dark glassy p-4">
       <div class="modal-header">
         <h5 class="modal-title">Search Articles</h5>
-        <button class=" btn-close bg-light" data-bs-dismiss="modal"></button>
+        <button class=" btn-close bg-secondary" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
-        <input id="search-input" type="text" autofocus class="form-control mb-3" placeholder="Enter keyword..." />
+        <input id="search-input" type="text" autofocus class="form-control mb-3 bg-dark text-light border-secondary" placeholder="Enter keyword..."/>
         <div id="search-results" class="d-flex flex-column gap-3"></div>
       </div>
     </div>
