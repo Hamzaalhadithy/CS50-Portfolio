@@ -86,7 +86,7 @@ python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 flask run
-- Make sure you have a .env file with your configs (email, secret key, etc.)
+Make sure you have a .env file with your configs (email, secret key, etc.)
 ```
 
 
