@@ -80,8 +80,8 @@ Built with 💻:
 ## 🔧 Running Locally
 
 ```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+git clone https://github.com/Hamzaalhadithy/CS50-Portfolio
+cd CS50-Portfolio
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
