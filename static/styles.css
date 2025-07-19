@@ -14,7 +14,7 @@ body {
   margin: 0;
 }
 .form-control::placeholder{
-  color: white;
+  color: rgba(255, 255, 255, 0.512);
 }
 .nav-link-active {
   border-bottom: 3px solid white;

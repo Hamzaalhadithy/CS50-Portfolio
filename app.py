@@ -205,7 +205,7 @@ def contact():
 @app.route("/logout")
 def logout():
     session.clear()
-    flash("Loged Out")
-    return redirect(url_for('index'))
+    flash("Logged Out")
+    return redirect(url_for('login'))
 
     
