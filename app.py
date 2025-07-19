@@ -17,6 +17,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
+# Configure Flask mail to send emails 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
@@ -26,6 +27,7 @@ app.config['MAIL_DEFAULT_SENDER'] = 'hamzaalseade@gmail.com'
 
 mail = Mail(app)
 
+#setting database for my app
 db = SQL("sqlite:///main.db")
 
 def login_required(f):
@@ -52,7 +54,7 @@ def after_request(response):
     response.headers["Pragma"] = "no-cache"
     return response
 
-
+#login route
 @app.route("/login", methods=["GET", "POST"])
 def login():
     """Log in for admins"""
@@ -79,19 +81,23 @@ def login():
     
     return render_template("login.html")
 
+#main route
 @app.route("/")
 def index():
     return render_template("index.html")
 
+#blog route
 @app.route("/blog") 
 def blog():
     return render_template("blog.html", user_id=session.get("user_id"))
 
+#api for sending the articles
 @app.route("/api/articles")
 def article():
     articles = db.execute("SELECT * FROM articles")
     return jsonify(articles), 200
 
+#api for sending specific articles
 @app.route("/api/articles/<int:article_id>")
 def get_article(article_id):
     article = db.execute("SELECT * FROM articles WHERE id = ?", article_id)
@@ -101,6 +107,7 @@ def get_article(article_id):
     
     return jsonify(article[0]), 200
 
+#api for searching in articles
 @app.route("/api/articles/search")
 def search_articles():
     query = request.args.get("query")
@@ -111,6 +118,7 @@ def search_articles():
     articles = db.execute("SELECT * FROM articles WHERE title LIKE ? OR content LIKE ?", like_query, like_query)
     return jsonify(articles), 200
 
+#api for creating a new article
 @app.route("/api/articles/create", methods=["POST"])
 def create_article():
     if "user_id" not in session:
@@ -129,6 +137,7 @@ def create_article():
           )
     return jsonify({"success": True}), 200
 
+#api for editing specific article
 @app.route("/api/articles/<int:article_id>/edit", methods=["PUT"])
 def edit_article(article_id):
     data = request.get_json()
@@ -136,16 +145,16 @@ def edit_article(article_id):
     if not data:
         return jsonify({"Error": "Didn't submit any content"}), 404
     
-    # validate required fields
+    
     if not all (key in data for key in ("image_url", "title", "content")):
         return jsonify({"error" : "Missing required fields"}), 400
     
-    #check if article exists
+   
     article = db.execute("SELECT * FROM articles WHERE id = ?", article_id)
     if not article:
         return jsonify({"error" : "aticled doesn't exist"}), 404
     
-    # Update article
+    
     db.execute(
         "UPDATE articles SET image_url = ?, title = ?, content = ? WHERE id = ?",
           data['image_url'], data['title'], data['content'], article_id)
@@ -153,7 +162,7 @@ def edit_article(article_id):
     return jsonify({"Success" : True}), 200
 
 
-
+#api for deleting article
 @app.route("/api/articles/<int:article_id>/delete", methods=["DELETE"])
 def del_article(article_id):
 
@@ -164,11 +173,12 @@ def del_article(article_id):
     db.execute("DELETE FROM articles WHERE id = ?", article_id)
     return jsonify({"success": True}), 200
 
-
+#route for projects
 @app.route("/projects")
 def projects():
     return render_template("projects.html")
 
+#api for requsting projects
 @app.route("/api/projects")
 def get_projects():
     projects = db.execute("SELECT * FROM projects")
@@ -176,7 +186,7 @@ def get_projects():
         return jsonify({"error":"No projects were found"}), 404
     return jsonify(projects), 200
 
-
+#contact route and email sending
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
     if request.method == "POST":
@@ -201,7 +211,7 @@ def contact():
     
     return render_template("contact.html")
 
-
+#loging out of site
 @app.route("/logout")
 def logout():
     session.clear()
